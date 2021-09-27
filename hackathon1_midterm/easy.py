@@ -1,5 +1,6 @@
 # 1
 import datetime
+
 def day_diff(release_date, code_complete_day):
     format_string = "%d/%m/%Y"
     release_date = datetime.datetime.strptime(release_date,format_string)
@@ -16,7 +17,7 @@ import re
 def alpha_num(sentence):
   rslt = []
   lst_str = sentence.split()
-  print(lst_str)
+  #print(lst_str)
   pattern1 = ".*[a-zA-Z]+.*.?[0-9]+.*"
   pattern2 = ".*[0-9]+.*.?[a-zA-Z]+.*"
   for i in range(len(lst_str)):
