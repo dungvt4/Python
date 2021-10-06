@@ -1,0 +1,17 @@
+[
+    {
+        "account_number":"1xx",
+        "account_name":"Vu thao Dung",
+        "balance":10000
+    },
+    {
+        "account_number":"2xx",
+        "account_name":"Vu Thao ",
+        "balance":100001
+    },
+    {
+        "account_number":"3xx",
+        "account_name":"Vu Thao ba ",
+        "balance":100003
+    }
+]
