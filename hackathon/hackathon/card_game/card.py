@@ -16,17 +16,7 @@ class Card:
 
     def __gt__(self, other):
         # '''So sánh 2 lá bài'''
-        if self.score() > other.score():
-            return True
-        elif self.rank == other.rank:  
-            if self.suit == '♦':
-                return True
-            elif other.suit == '♠':
-                return True
-            elif self.suit == '♥' and other.suit == '♣':
-                return True
-            else: return False
-        else: return False
+        return self.pointbySuit() > other.pointbySuit()
 
     def suit_point(self):
         if self.suit == '♦': return 4
@@ -34,13 +24,8 @@ class Card:
         elif self.suit == '♣': return 2
         else : return 1
 
-    def compare_suit(self, other):
-        # '''So sánh 2 lá bài theo chất'''
-        if self.suit_point() > other.suit_point(): return 1
-        elif self.suit_point() == other.suit_point(): 
-            if self.score() > other.score(): return 1
-            else: return 0
-        else: return 0
+    def pointbySuit(self):
+        return self.suit_point() * 10 + self.score()
     
     
     def score(self):
