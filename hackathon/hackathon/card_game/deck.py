@@ -14,10 +14,9 @@ class Deck:
     def build(self):
         '''Tạo bộ bài'''
         self.cards = []
-        for i in ('A', 2, 3, 4, 5, 6, 7, 8, 9):
-            for j in ('♠', '♣', '♦', '♥'):
-                c = Card(i,j)
-                self.cards.append(c)
+        for rank in ('A', 2, 3, 4, 5, 6, 7, 8, 9):
+            for suit in ('♠', '♣', '♦', '♥'):
+                self.cards.append(Card(rank, suit))
         
 
 
@@ -39,10 +38,10 @@ class Deck:
         
         
 
-v = Deck()
-v.build()
-# v.shuffle_card()
-v.display()
+# v = Deck()
+# v.build()
+# # v.shuffle_card()
+# v.display()
 # print("==========")
 # a = v.deal_card()
 # print(a.__str__())

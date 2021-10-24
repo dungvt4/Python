@@ -1,5 +1,4 @@
-
-from card import Card
+#from card import Card
 from deck import Deck
 
 class Player:
@@ -9,9 +8,9 @@ class Player:
     Người chơi chỉ cần lưu tên, và các lá bài người chơi có
     '''
 
-    def __init__(self, name, deck):  # dễ
+    def __init__(self, id,  name):  # dễ
+        self.id = id
         self.name = name
-        self.deck = deck
         self.card_list = []
         pass
 
@@ -20,9 +19,8 @@ class Player:
         '''Tính điểm cho bộ bài'''
         p = 0 
         for c in self.card_list:
-            # print(type(c))
             p += c.score()
-        p = p % 10
+        p %= 10
         if p == 0: return 10
         else: return p
 
@@ -32,18 +30,13 @@ class Player:
         # Tìm lá bài lớn nhất
         # Trong trường hợp điểm bằng nhau, sẽ so sánh lá bài lớn nhất để tìm ra người chiến thắng
         # '''
-        mx = self.card_list[0]
-        for c in range (1, len(self.card_list)):
-            # print(f"{self.card_list[c]} > {mx}:{self.card_list[c] > mx}")
-            if (self.card_list[c] > mx):
-              mx = self.card_list[c]
-        return mx
+        return max(self.card_list)
 
-    def add_card(self):
+    def add_card(self, card):
         # '''Thêm một lá bài vào bộ (rút từ bộ bài)'''
         if len(self.card_list) > 3:
             return
-        self.card_list.append(self.deck.deal_card())
+        self.card_list.append(card)
 
     def remove_card(self):
         # '''Reset bộ bài khi chơi game mới'''
@@ -52,21 +45,22 @@ class Player:
 
     def flip_card(self):
         # '''Lật bài, hiển thị các lá bài'''
-        return f"{self.card_list[0].__str__()},{self.card_list[1].__str__()},{self.card_list[2].__str__()}"
-
-    # def __str__(self):
-    #     return f"{self.card_list[0].__str__()},{self.card_list[1].__str__()},{self.card_list[2].__str__()}"
+        return ' '.join([str(c) for c in self.card_list])
 
 
 
-deck1 = Deck()
-deck1.build()
-deck1.shuffle_card()
-dung = Player("dung", deck1)
-for i in range (3):
-    dung.add_card()
-# print(dung)
-# dung.point
+
+# deck1 = Deck()
+# deck1.build()
+# deck1.shuffle_card()
+# # deck1.display()
+# dung = Player(1, "dung")
+# print('===============')
+# for i in range (3):
+#     card = deck1.deal_card()
+#     dung.add_card(card)
+# # print(dung)
+# # dung.point
 # print(dung.biggest_card)
-dung.flip_card()
+# print(dung.flip_card())
 
