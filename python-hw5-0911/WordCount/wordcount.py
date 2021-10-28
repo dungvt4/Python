@@ -36,19 +36,29 @@ from docx import Document
 
 def get_words(filename):
   row = []
-  list_tup = []
-  with open(f"{filename}", 'r',encoding='latin1') as file:
-    for line in file:
-      file.readline()
-      row.append(line.rstrip("\n"))
-      row.append('')
-    list_str = row.split()
-    Counter(list_str)
+  list_str = []
+  dict_count = {}
+  with open(filename , encoding='utf-8-sig') as f:
+    for line in f:
+      line = remove_special_char(line.lower())
+      row = line.split()
+      list_str.extend(row)
+    dict_count = Counter(list_str)
+  return dict_count
+
+
+
+def remove_special_char(str):
+  list_special = ['!'	,'”'	,'#'	,'$'	,'%'	,'&'	,'’', '('	,')' ,'*'	,'+'	,','	,'-'	,'.'	,'/'	,':'	,';'	,'<'	,'='	,'>'	,'?'	,'@'	,'[',"\'" ]
+  for j in list_special:
+    str = str.replace(j," ")
+  return str
         
 
 
 def get_top_words(filename):
-  pass
+  dict_count = get_words(filename)
+  return(dict_count.most_common(20))
 
 ###
 
@@ -64,15 +74,17 @@ def main():
   ans = []
   if option == '--count':
     ans = get_words(filename)
+    print(ans)
   elif option == '--topcount':
     ans = get_top_words(filename)
+    print(ans)
   else:
     print('unknown option: ' + option)
     sys.exit(1)
 
   # print out the answer
-  for item in ans:
-    print(item[0], item[1])
+  # for item in ans:
+  #   print(item[0], item[1])
 
 if __name__ == '__main__':
   main()

@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="D:\python\python-hw5-0911\WordCount\wordcount-env"
+$env:VIRTUAL_ENV="D:\python\Python\python-hw5-0911\WordCount\wordcount-env"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name
