@@ -2,18 +2,24 @@ import math
 
 class Fraction:
     def __init__(self, nr, dr):
-        self.nr = int(nr)
-        self.dr = int(dr)
+        assert  dr != 0, f"ZeroDevisonError: mẫu số {dr} ko hợp lệ"
+        self.nr = nr
+        self.dr = dr
         self.reduce()
     
     def __repr__(self):
-        if self.dr != 0:
-            if self.nr // self.dr <0:
-                self.nr = self.nr * (-1)
-                return(f"{self.nr}/{abs(self.dr)}")
-            return f"{abs(self.nr)}/{abs(self.dr)}"
-        else: 
-            pass
+        # try: 
+            if self.dr != 0:
+                if self.nr == 0:
+                    return f"0"
+                elif self.dr == 1:
+                    return f"{self.nr}"
+                if self.nr // self.dr <0:
+                    self.nr = self.nr * (-1)
+                    return(f"{self.nr}/{abs(self.dr)}")
+                return f"{abs(self.nr)}/{abs(self.dr)}"
+        # except Exception as e:
+        #     print("Error:", e)
     
     def hcf(self):
             mins = min(abs(self.nr), abs(self.dr))
@@ -22,17 +28,12 @@ class Fraction:
                     return ucln
     
     def reduce(self):
-        if self.dr == 0:
-            print("ZeroDevisonError")
-        elif self.nr == 0:
-            print("0")
-        elif self.dr == 1:
-            print(f"{self.nr}")
-        else:
-            ucln = self.hcf()
-            self.nr = int(self.nr/ucln)
-            self.dr = int(self.dr/ucln)
+            if self.dr != 0 and self.dr != 1 and self.nr != 0:
+                ucln = self.hcf()
+                self.nr = int(self.nr/ucln)
+                self.dr = int(self.dr/ucln)
 
+        
     def __mul__(self, other):
         if type(other) == int:
            return Fraction(self.nr * other, self.dr) 
@@ -50,14 +51,14 @@ class Fraction:
 
 
 
-x = Fraction(2,6)
-print(x)
-y = Fraction(-1,-6)
-print(y)
-print(x*y)
-print(x+y)
-print(x-y)
+# x = Fraction(2,6)
+# print(x)
+# y = Fraction(-1,-6)
+# print(y)
+# print(x*y)
+# print(x+y)
+# print(x-y)
 
-z = Fraction(0,0)
+z = Fraction(4,0)
 print(z)
 

@@ -75,7 +75,7 @@ class Game:
         winner = self.players[0]
         for player in self.players:
             temp = vars(player)
-            print (f"{temp['name']:15}{player.flip_card():5}  Điểm:{player.point:2}  Lá lớn nhất là:{player.biggest_card}")
+            print (f"{temp['name']:15}{player.flip_card():5}  Điểm:{player.point:2}  Lá bài lớn nhất là:{player.biggest_card}")
             if mx_point < player.point: 
                 mx_point = player.point
                 winner = player

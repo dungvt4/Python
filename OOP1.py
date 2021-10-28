@@ -2,7 +2,7 @@ class BankAccount():
     def __init__(self, account_number, account_name, balance = 0):
         self._account_number = account_number
         self._account_name = account_name
-        self._balance = balance
+        self.set_balance = balance
 
     def get_account_number(self):
         return self._account_number
