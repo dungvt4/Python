@@ -9,7 +9,7 @@ def readfile_image(filename):
             # content = f.readline()
             data_find = re.findall(pattern, line, re.MULTILINE)
             if (data_find):
-                print(data_find)
+                # print(data_find)
                 data.add(data_find[0])
 
     domain = get_domain(filename)
