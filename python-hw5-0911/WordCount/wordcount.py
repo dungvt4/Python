@@ -30,7 +30,7 @@ get_words() và get_top_words().
 
 import sys
 from collections import Counter
-from docx import Document
+# from docx import Document
 
 # +++your code here+++
 
@@ -44,7 +44,7 @@ def get_words(filename):
       row = line.split()
       list_str.extend(row)
     dict_count = Counter(list_str)
-  return dict_count
+  return dict_count.most_common()
 
 
 
@@ -57,8 +57,9 @@ def remove_special_char(str):
 
 
 def get_top_words(filename):
-  dict_count = get_words(filename)
-  return(dict_count.most_common(20))
+  dict_count = get_words(filename)[0:20]
+  return dict_count
+
 
 ###
 
