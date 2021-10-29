@@ -57,8 +57,8 @@ def remove_special_char(str):
 
 
 def get_top_words(filename):
-  dict_count = get_words(filename)[0:20]
-  return dict_count
+  dict_top_count = get_words(filename)[0:20]
+  return dict_top_count
 
 
 ###
