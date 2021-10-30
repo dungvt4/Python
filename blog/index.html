@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tiêu đề trang -->
+    <title>Blog title here</title>
+
+    <!-- Nhúng font Roboto của Google, copy code nhúng ở trang https://fonts.google.com/specimen/Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Nhúng CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Phần đầu trang -->
+    <header>
+      <!-- Menu của website -->
+      <nav class="container">
+        <!-- Để đơn giản thì chỉ đặt 1 đoạn text coi như tên website (thường dùng ảnh logo) -->
+        <!-- Dùng thẻ a vì người ta thường bấm vào logo để quay về trang chủ -->
+        <a href="/" class="logo text-center">My Blog</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Nội dung chính của trang, có thể dùng thẻ main hoặc thẻ div cũng được -->
+      <article>
+        <!-- Trong 1 trang chỉ nên có 1 thẻ h1 là tiêu đề chính -->
+        <h1>Blog title here</h1>
+        
+        <div class="article-meta-data">
+          <!-- Dùng thẻ a để có thể bấm vào chuyển qua trang bài viết theo tác giả, dấu # là để tạm vì chưa có link -->
+          By <a href="#">Dzung Vu</a>
+          <span class="article-time">6 hours ago</span>
+        </div>
+
+        <a
+          class="w3-bar-item w3-button active"
+          href="/html/default.asp"
+          title="HTML Tutorial"
+          style="padding-left: 18px !important; padding-right: 18px !important"
+          >Star</a
+        >
+        <a
+          class="w3-bar-item w3-button"
+          href="/css/default.asp"
+          title="CSS Tutorial"
+          >TV Show</a
+        >
+        <a
+          class="w3-bar-item w3-button"
+          href="/js/default.asp"
+          title="JavaScript Tutorial"
+          >Cine</a
+        >
+        <a
+          class="w3-bar-item w3-button"
+          href="/sql/default.asp"
+          title="SQL Tutorial"
+          >Musik</a
+        >
+        <a
+          class="w3-bar-item w3-button"
+          href="/python/default.asp"
+          title="Python Tutorial"
+          >Xã hội</a
+        >
+
+        <h2>Thời tiết</h2>
+
+        <ul>
+          <li>Từ ngày 29-31.10, có mưa vừa, mưa to, có nơi mưa rất to và dông. Trời lạnh.</li>
+          <li>Từ ngày 1-2.11, có mưa rào và dông rải rác. Trời lạnh</li>
+          <li>Từ ngày 3-7.11, có mưa vài nơi, sáng sớm có sương mù và sương mù nhẹ rải rác, trưa chiều trời nắng.</li>
+          <li>Từ ngày 29.10 có mưa vài nơi, riêng nam Sơn La, Hòa Bình có mưa vừa, mưa to, có nơi mưa rất to và dông. Trời lạnh.</li>
+          <li>Từ 30.10-2.11, có mưa rào và dông rải rác; riêng nam Sơn La, Hòa Bình có mưa vừa, mưa to, có nơi mưa rất to và dông. Trời lạnh.</li>
+          <li>
+            Từ ngày 3.11 đến ngày 7.11, có mưa vài nơi, sáng sớm có sương mù và sương mù nhẹ rải rác, trưa chiều trời nắng.
+          </li>
+        </ul>
+
+        <h2>TV Show</h2>
+
+        <p>
+          Mâu Thủy cứ nhận làm giám khảo thì hoãn show, The Next Face có giúp đổi vận?
+        </p>
+
+        <p>
+          Jack sẽ trở lại thay thế Karik trong 5 tập cuối của Running Man?
+        </p>
+
+        <p>
+          <img alt="View in Browser" src="./img/img_chrome.png" />
+        </p>
+
+        <h2>HTML Page Structure</h2>
+
+        <p>Below is a visualization of an HTML page structure:</p>
+
+        <p>
+          <img alt="HTML Page Structure" src="./img/HTML_page_structure.jpg" />
+        </p>
+
+        <p>
+          <strong>Note:</strong> The content inside the &lt;body&gt; section
+          (the white area above) will be displayed in a browser. The content
+          inside the &lt;title&gt; element will be shown in the browser's title
+          bar or in the page's tab.
+        </p>
+      </article>
+
+      <div class="section">
+        <div class="section-title">Categories</div>
+
+        <div class="section-content">
+          <a href="#" class="tag">Web</a>
+          <a href="#" class="tag">Programming</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Phần chân trang -->
+    <footer>
+      <div class="container text-center">Made by Dzung Vu © 2021</div>
+    </footer>
+  </body>
+</html>

@@ -34,7 +34,7 @@ class Deck:
 
     def display(self):
         for a in self.cards:
-            print(a)
+            print(str(a))
         
         
 
