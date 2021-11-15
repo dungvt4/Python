@@ -72,7 +72,7 @@ def resignation_letter():
 def save_doc():
     error = False
     is_save = False
-    save_path = os.path.dirname(os.path.abspath(__file__))
+    current_path = os.path.dirname(os.path.abspath(__file__))
     fullname = str(request.form["fullname"])
     reason = str(request.form["reason"])
     if fullname and reason: 
@@ -81,7 +81,7 @@ def save_doc():
         doc.add_paragraph(fullname)
         doc.add_paragraph(reason)
         file_name ='Resignation-Letter.docx'
-        doc.save(os.path.join(save_path,'static',file_name))
+        doc.save(os.path.join(current_path,'static',file_name))
         is_save = True
     else: 
         error = True
