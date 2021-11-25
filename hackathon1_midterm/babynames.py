@@ -36,12 +36,29 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  pass
+  pattern_year = """Popularity in (\d+)"""
+  pattern_rank = """<td>(\d+)</td><td>([a-zA-Z]+)</td><td>([a-zA-Z]+)</td>"""
+  year = 0
+  list_rslt = []
+  with open(filename, "r", encoding='utf-8-sig') as f:
+    lines = f.readlines()
+    for line in lines:
+      re_year = re.search(pattern_year, line)
+      if re_year:
+        year = re_year.groups()[0]
+      re_rank = re.findall(pattern_rank, line)
+      if re_rank:
+        list_rslt.append(re_rank[0][1] + " " + re_rank[0][0])
+        list_rslt.append(re_rank[0][2] + " " + re_rank[0][0])
+  list_rslt.sort()
+  list_rslt.insert(0, year)     
+  return list_rslt   
 
 
 def main():
   # Chương trình này có thể nhận đối số đầu vào là một hoặc nhiều tên file
   args = sys.argv[1:]
+  ans = []
 
   if not args:
     print('usage: [--summaryfile] file [file ...]')
@@ -56,6 +73,10 @@ def main():
   # +++your code here+++
   # Với mỗi tên file, gọi hàm extract_names ở trên và in kết quả ra stdout
   # hoặc viết kết quả ra file summary (nếu có input --summaryfile).
+    for arg in (args):
+      ans = extract_names(arg)
+      print(f"===================== Thông tin file {arg}: ")
+      print(ans)
   
 if __name__ == '__main__':
   main()

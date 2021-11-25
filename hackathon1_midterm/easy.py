@@ -30,3 +30,16 @@ def alpha_num(sentence):
       rslt.extend(match2)
   return rslt
 
+#2 cách 2
+import re
+def alpha_num2(sen):
+    rslt2 = []
+    lst_str2 = sen.split()
+    for word in lst_str2:
+      if re.search('\d',word) and re.search('[a-zA-Z]', word):
+        rslt2.append(word)
+    
+    return rslt2
+
+# str1 = "1Emma is Data scientist50 and 23AI E3xpert"
+# print(alpha_num2(str1))
