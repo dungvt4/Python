@@ -73,10 +73,15 @@ def main():
   # +++your code here+++
   # Với mỗi tên file, gọi hàm extract_names ở trên và in kết quả ra stdout
   # hoặc viết kết quả ra file summary (nếu có input --summaryfile).
-    for arg in (args):
-      ans = extract_names(arg)
-      print(f"===================== Thông tin file {arg}: ")
-      print(ans)
+  list_data = []
+  for arg in (args):
+    ans = extract_names(arg)
+    list_data.extend(ans)
+  if summary:
+    with open("summary.txt","w", encoding='utf-8') as file:
+      file.write('\n'.join(list_data))
+      print("Mời bạn mở file kết quả summary.txt")
+  else: print(list_data)
   
 if __name__ == '__main__':
   main()
