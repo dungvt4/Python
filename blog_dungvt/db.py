@@ -24,7 +24,7 @@ db = pymysql.connect(
 cur = db.cursor(pymysql.cursors.DictCursor)
 
 def log(post):
-    sql = f'''
+    sql = '''
     INSERT INTO posts (title, content)
     VALUES (%s, %s)
     '''
@@ -54,14 +54,14 @@ def get_detail(id):
     SELECT
             *
     FROM posts AS p
-    WHERE p.id = %s'''
+    WHERE p.id like %s'''
 
     cur.execute(sql,id)
     post = cur.fetchone()   
     return post
 
 def update(post):
-    sql = f'''
+    sql = '''
     UPDATE posts p
     SET p.title = %s, p.content = %s
     WHERE p.id = %s'''

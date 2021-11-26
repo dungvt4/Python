@@ -57,10 +57,10 @@
         </div>
 
         {% if error%}
-            <p>Bạn cần nhập đủ 'fullname' và 'reason'</p>
+            <p style="color: red;">Bạn cần nhập đủ 'fullname' và 'reason'</p>
         {%else%}
             {% if is_save %}
-                <p>File created! Click on the link to download the file and send it to your boss right away :) <a href="/static/{{file_name}}" download="/static/{{file_name}}">Download</a></p>
+                <p>File created! Click on the link to download the file and send it to your boss right away :) <a href="/static/{{file_name}}" download="{{file_name}}">Download</a></p>
             {% endif %}
         {% endif%}
     </form>

@@ -19,8 +19,8 @@ def homepage():
 @app.route("/", methods = ["POST"])
 def new_post():
     error = False
-    title = str(request.form["title"])
-    content = str(request.form["content"])
+    title = (request.form["title"])
+    content = (request.form["content"])
     if title and content: 
         post = (title,content)
         db.log(post)
@@ -42,8 +42,8 @@ def detail(id):
 @app.route("/post/<id>",methods = ["POST"])
 def edit_post(id):
     error = False
-    title = str(request.form["title"])
-    content = str(request.form["content"])
+    title = (request.form["title"])
+    content = (request.form["content"])
     if title and content: 
         post = (title,content,id)
         db.update(post)
@@ -73,8 +73,8 @@ def save_doc():
     error = False
     is_save = False
     current_path = os.path.dirname(os.path.abspath(__file__))
-    fullname = str(request.form["fullname"])
-    reason = str(request.form["reason"])
+    fullname = request.form["fullname"]
+    reason = request.form["reason"]
     if fullname and reason: 
         doc = Document()
         doc.add_heading("Resignation Letter")
@@ -83,9 +83,11 @@ def save_doc():
         file_name ='Resignation-Letter.docx'
         doc.save(os.path.join(current_path,'static',file_name))
         is_save = True
+        return render_template("resignation-letter.html", error = error, is_save = is_save, file_name=file_name)
     else: 
         error = True
-    return render_template("resignation-letter.html", error = error, is_save = is_save, file_name=file_name)
+        return render_template("resignation-letter.html", error = error)
+    
 
 # Kiểm tra nếu là main script
 if __name__ == "__main__":
