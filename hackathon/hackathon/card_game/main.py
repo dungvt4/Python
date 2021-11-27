@@ -73,12 +73,15 @@ def main():  # khó
         
         if (option == 7):
             history_detail = db.history()
-            sum = 0
-            for row in history_detail:
-                sum += row['count']
-            print(f"Số ván chơi ngày hôm nay: {sum: 5}")
-            for row in history_detail:
-                print(f"{row['winner']:15}         thắng {row['count']: 3} ván")
+            if (history_detail):
+                sum = 0
+                for row in history_detail:
+                    sum += row['count']
+                print(f"Số ván chơi ngày hôm nay: {sum: 5}")
+                for row in history_detail:
+                    print(f"{row['winner']:15}         thắng {row['count']: 3} ván")
+            else:
+                print('Ngày hôm nay chưa có ván chơi nào.')
                 
                               
         if (option == 8):
