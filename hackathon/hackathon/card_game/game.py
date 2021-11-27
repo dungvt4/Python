@@ -10,15 +10,13 @@ class Game:
 
     Game chứa danh sách người chơi, và bộ bài
     '''
-    min_player = 2
-    max_player = 12
     
     def __init__(self):
         self.deck = Deck()
         self.players = []
-        self.is_deal = False
-        self.is_flip = False
-        self.is_playind = False
+        self.is_dealt = False
+        self.is_flipped = False
+        self.is_playing = False
         self.min_player = 2
         self.max_player = 12
 
@@ -37,7 +35,6 @@ class Game:
         elif num_of_player > 12: raise error.MaximumPlayersError
         else:            
             id = 0
-            # self.players = []
             for c in range (0,num_of_player):
                 id += 1
                 name = str(input(f'Tên Người chơi {id} : '))
@@ -66,6 +63,7 @@ class Game:
     def add_player(self):
         # '''Thêm một người chơi mới'''
         if (len(self.players) >= self.max_player): raise error.MaximumPlayersError
+        elif (self.is_playing): raise error.isPlayingError
         else:  
             last_player = self.players[-1]      # lấy ra player cuối list là player có id lớn nhất (cho case xóa ng chơi rồi thêm ng chơi sẽ ko bị trùng id)
             id = last_player.id + 1
@@ -79,6 +77,7 @@ class Game:
         # '''
         id = 0
         if (len(self.players) <= self.min_player): raise error.MinimumPlayersError
+        elif (self.is_playing): raise error.isPlayingError
         else: 
             try:
                 id = int(input(f'Mời bạn nhập ID người muốn loại : '))
@@ -98,8 +97,8 @@ class Game:
 
     def deal_card(self):
         '''Chia bài cho người chơi'''
-        if self.is_deal == True: 
-            print ("Bài đã chia")
+        if (self.is_dealt): raise error.isDealtError
+        elif (self.is_flipped): raise error.isFlipedError
         else:          
             self.deck.build()
             self.deck.shuffle_card()   
@@ -108,25 +107,33 @@ class Game:
                 for player in self.players:
                     card = self.deck.deal_card()
                     player.add_card(card)
+            self.is_playing = True
+            self.is_dealt = True
+            
+            print("Chia bài thành công, cùng lật bài xem ai là người thắng cuộc nào.")
 
     def flip_cards(self):
         '''Lật bài tất cả người chơi, thông báo người chiến thắng'''
-        mx_point = 0
-        winner = self.players[0]
-        players = []
-        for player in self.players:
-            print (f"{player.name:15}{player.flip_card():5}  Điểm:{player.point:2}  Lá bài lớn nhất là:{player.biggest_card}")
-            players.append({'player': player.name, 'cards': player.flip_card(), 'point': player.point, 'biggest_card': player.biggest_card})
+        if (self.is_flipped): raise error.isFlipedError
+        elif (self.is_dealt == False ): raise error.isNotDealtError
+        else:
+            mx_point = 0
+            winner = self.players[0]
+            players = []
+            for player in self.players:
+                print (f"{player.name:15}{player.flip_card():5}  Điểm:{player.point:2}  Lá bài lớn nhất là:{player.biggest_card}")
+                players.append({'player': player.name, 'cards': player.flip_card(), 'point': player.point, 'biggest_card': player.biggest_card})
             
-            if mx_point < player.point: 
-                mx_point = player.point
-                winner = player
-            elif mx_point ==  player.point:
-                if player.biggest_card == max (player.biggest_card, winner.biggest_card):
+                if mx_point < player.point: 
+                    mx_point = player.point
                     winner = player
-        print(f"Người thắng cuộc là: {winner.name}")
+                elif mx_point ==  player.point:
+                    if player.biggest_card == max (player.biggest_card, winner.biggest_card):
+                        winner = player
+            print(f"Người thắng cuộc là: {winner.name}")
     
-        self.is_flip = True
+        self.is_flipped = True
+        self.is_playing = True
         db.log(winner.name,players)
     
                 

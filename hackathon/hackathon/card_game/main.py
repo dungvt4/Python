@@ -40,19 +40,27 @@ def main():  # khó
                 except error.Error as e:
                     print(e.message)
                     break
-                # except error.NotIntegerError as e:
-                #     print(e.message)
-                #     break
-                # except error.NotFoundPlayerError as e:
-                #     print(e.message)
-                #     break
+                
                     
         if (option == 4):
-            game.deal_card()       
+            while True:
+                try:
+                    game.deal_card()
+                    break
+                except error.Error as e:
+                    print(e.message)
+                    break           
+                   
 
             
         if (option == 5):
-            game.flip_cards()
+            while True:
+                try:
+                    game.flip_cards()
+                    break
+                except error.Error as e:
+                    print(e.message)
+                    break 
             
         
         if (option == 6):
