@@ -1,0 +1,20 @@
+DROP DATABASE IF EXISTS cardgame_log;
+
+CREATE DATABASE IF NOT EXISTS cardgame_log;
+
+CREATE TABLE IF NOT EXISTS cardgame_log.games (
+	game_id INT PRIMARY KEY AUTO_INCREMENT,
+    winner VARCHAR(100),
+    created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=1001;
+
+CREATE TABLE IF NOT EXISTS cardgame_log.logs (
+	log_id INT PRIMARY KEY AUTO_INCREMENT,
+    game_id INT NOT NULL,
+    player VARCHAR(100) NOT NULL,
+    cards VARCHAR(20) NOT NULL,
+    point int NOT NULL,
+    biggest_card VARCHAR(2) NOT NULL,
+    created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (game_id) REFERENCES cardgame_log.games(game_id)
+) ENGINE=InnoDB AUTO_INCREMENT=10001;
