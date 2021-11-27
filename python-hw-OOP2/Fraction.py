@@ -2,10 +2,11 @@ import math
 
 class Fraction:
     def __init__(self, nr, dr):
-        assert  dr != 0, f"ZeroDevisonError: mẫu số {dr} ko hợp lệ"
-        self.nr = nr
-        self.dr = dr
-        self.reduce()
+        if  (dr == 0): raise ZeroDivisionError
+        else: 
+            self.nr = nr
+            self.dr = dr
+            self.reduce()
     
     def __repr__(self):
         # try: 
@@ -14,9 +15,10 @@ class Fraction:
                     return f"0"
                 elif self.dr == 1:
                     return f"{self.nr}"
-                if self.nr // self.dr <0:
-                    self.nr = self.nr * (-1)
-                    return(f"{self.nr}/{abs(self.dr)}")
+                elif self.dr == -1:
+                    return f"-{self.nr}"
+                elif self.nr // self.dr <0:
+                    return(f"-{abs(self.nr)}/{abs(self.dr)}")
                 return f"{abs(self.nr)}/{abs(self.dr)}"
         # except Exception as e:
         #     print("Error:", e)
@@ -59,6 +61,23 @@ class Fraction:
 # print(x+y)
 # print(x-y)
 
-z = Fraction(4,0)
-print(z)
+
+
+while True:
+    try:
+        x = Fraction(4,-3)
+        y = Fraction(-1,-6)
+        z = 2
+        t = 0
+        k = -1
+        print(x*y)
+        print(x+y)
+        print(x-y)
+        print(x*z)
+        print(x*t)
+        print(x*k)
+        break
+    except ZeroDivisionError as e:
+        print("Mẫu số phải là số nguyên khác 0")
+        break
 
