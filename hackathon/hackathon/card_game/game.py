@@ -57,8 +57,8 @@ class Game:
         # '''Hiển thị danh sách người chơi'''
         print("ID     Tên")
         for player in self.players: 
-            temp = vars(player)
-            print(f"{temp['id']:2}     {temp['name']:15}")
+            # temp = vars(player)
+            print(f"{player.id:2}     {player.name:15}")
 
     def add_player(self):
         # '''Thêm một người chơi mới'''
