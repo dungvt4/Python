@@ -122,7 +122,7 @@ class Game:
             players = []
             for player in self.players:
                 print (f"{player.name:15}{player.flip_card():5}  Điểm:{player.point:2}  Lá bài lớn nhất là:{player.biggest_card}")
-                players.append({'player': player.name, 'cards': player.flip_card(), 'point': player.point, 'biggest_card': player.biggest_card})
+                players.append({'player': player.name, 'cards': player.flip_card(), 'point': player.point, 'biggest_card': player.biggest_card}) # gán vào list players để lưu DB
             
                 if mx_point < player.point: 
                     mx_point = player.point
